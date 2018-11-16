@@ -50,17 +50,14 @@ public class Main {
                 "insidious", "strip", "ruddy", "snails", "absurd", "ill", "same", "knife", "slim", "embarrass", "mice", "shame",
                 "normal", "useful", "complete", "waggish", "gaudy", "number", "fancy", "flaky", "robust", "massive", "existence",
                 "charming", "disillusioned", "encourage", "behave", "chess", "mourn", "grandfather", "zany", "crayon",
-                "time", "overwrought", "eager", "rude"};
+                "time", "overwrought", "eager", "rude","yeet","jazz","pneumonoultramicroscopicsilicovolcanoconiosis"};
         // Picks a word for the game
         int WordNumber = (int) (Math.random() * words.length);
         // stores the letter in a array
         char[] enteredLetters = new char[words[WordNumber].length()];
         int triesCount = 0;
         boolean wordIsGuessed = false;
-        System.out.println(words[WordNumber]);
-        System.out.println(triesCount);
-
-        System.out.println(enteredLetters);
+        //System.out.println(words[WordNumber]);
         do {
             switch (enterLetter(words[WordNumber], enteredLetters)){
                 case 0:
@@ -137,4 +134,58 @@ public class Main {
         while (enteredLetters[i] != '\u0000') i++;
         return i;
     }
+
+    public static String displayHangman(int mistakes){
+        String display = "";
+        switch(mistakes){
+            case 4:
+                display = "no issues\n";
+                break;
+            case 0:
+                display = "____________\n"+
+                        "       |      \n"+
+                        "       O      \n";
+                break;
+            case 6:
+                display = "____________\n"+
+                        "       |      \n"+
+                        "       O      \n"+
+                        "       |      \n"+
+                        "       |      \n";
+                break;
+            case 7:
+                display = "____________\n"+
+                        "       |      \n"+
+                        "       O      \n"+
+                        "       |--    \n"+
+                        "       |      \n";
+                break;
+            case 8:
+                display = "____________\n"+
+                        "       |      \n"+
+                        "       O      \n"+
+                        "     --|--    \n"+
+                        "       |      \n";
+                break;
+            case 9:
+                display = "____________\n"+
+                        "       |      \n"+
+                        "       O      \n"+
+                        "     --|--      \n"+
+                        "       |      \n"+
+                        "      /        \n"+
+                        "     /          ";
+            case 10:
+                display = "____________\n"+
+                        "       |      \n"+
+                        "       O      \n"+
+                        "     --|--     \n"+
+                        "       |      \n"+
+                        "      / \\       \n"+
+                        "     /   \\      ";
+                break;
+        }
+        return display;
+    }
+
 }
