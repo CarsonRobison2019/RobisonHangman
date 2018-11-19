@@ -56,12 +56,15 @@ public class Main {
         // stores the letter in a array
         char[] enteredLetters = new char[words[WordNumber].length()];
         int triesCount = 0;
+        int badguess =0;
         boolean wordIsGuessed = false;
-        //System.out.println(words[WordNumber]);
+        System.out.println(words[WordNumber]);
         do {
+            System.out.println("you have missed "+badguess+" letters");
             switch (enterLetter(words[WordNumber], enteredLetters)){
                 case 0:
                     triesCount++;
+                    badguess++;
                     break;
                 case 1:
                     triesCount++;
@@ -138,43 +141,53 @@ public class Main {
     public static String displayHangman(int mistakes){
         String display = "";
         switch(mistakes){
-            case 4:
-                display = "no issues\n";
+            case 11:
+                display = "Keep going";
                 break;
             case 0:
                 display = "____________\n"+
                         "       |      \n"+
-                        "       O      \n";
+                        "       O      \n"+
+                        "              \n"+
+                        "              \n"+
+                        "              \n"+
+                        "              \n";
                 break;
             case 6:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "       |      \n"+
-                        "       |      \n";
+                        "       |      \n"+
+                        "              \n"+
+                        "              \n";
                 break;
             case 7:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "       |--    \n"+
-                        "       |      \n";
+                        "       |      \n"+
+                        "              \n"+
+                        "              \n";
                 break;
             case 8:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "     --|--    \n"+
-                        "       |      \n";
+                        "       |      \n"+
+                        "              \n"+
+                        "              \n";
                 break;
             case 9:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
-                        "     --|--      \n"+
+                        "     --|--     \n"+
                         "       |      \n"+
-                        "      /        \n"+
-                        "     /          ";
+                        "      / \\       \n"+
+                        "     /   \\      ";
             case 10:
                 display = "____________\n"+
                         "       |      \n"+
