@@ -70,6 +70,7 @@ public class Main {
                     triesCount++;
                     break;
                 case 2:
+                    triesCount++;
                     badguess++;
                     break;
                 case 3:
@@ -77,7 +78,7 @@ public class Main {
                     break;
             }
         }while (! wordIsGuessed);
-        System.out.println("\nThe Word was "+words[WordNumber]);
+        System.out.println(" you missed "+ badguess + " times "+ "\nThe Word was "+words[WordNumber]);
     }
 
 
