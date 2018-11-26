@@ -70,6 +70,7 @@ public class Main {
                     triesCount++;
                     break;
                 case 2:
+                    badguess++;
                     break;
                 case 3:
                     wordIsGuessed = true;
