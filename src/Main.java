@@ -60,7 +60,7 @@ public class Main {
         boolean wordIsGuessed = false;
         System.out.println(words[WordNumber]);
         do {
-            System.out.println("you have missed "+badguess+" letters");
+            System.out.println(displayHangman(badguess)+"\n"+"\nyou have missed "+badguess+" letters");
             switch (enterLetter(words[WordNumber], enteredLetters)){
                 case 0:
                     triesCount++;
@@ -140,13 +140,13 @@ public class Main {
         return i;
     }
 
-    public static String displayHangman(int mistakes){
+    public static String displayHangman(int badguess){
         String display = "";
-        switch(mistakes){
-            case 11:
-                display = "Keep going";
-                break;
+        switch(badguess){
             case 0:
+                display = " ";
+                break;
+            case 1:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
@@ -155,7 +155,7 @@ public class Main {
                         "              \n"+
                         "              \n";
                 break;
-            case 6:
+            case 2:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
@@ -164,7 +164,7 @@ public class Main {
                         "              \n"+
                         "              \n";
                 break;
-            case 7:
+            case 3:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
@@ -173,7 +173,7 @@ public class Main {
                         "              \n"+
                         "              \n";
                 break;
-            case 8:
+            case 4:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
@@ -182,22 +182,23 @@ public class Main {
                         "              \n"+
                         "              \n";
                 break;
-            case 9:
+            case 5:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
-                        "     --|--     \n"+
+                        "     --|--    \n"+
                         "       |      \n"+
-                        "      / \\       \n"+
-                        "     /   \\      ";
-            case 10:
+                        "      /       \n"+
+                        "     /          ";
+                break;
+            case 6:
                 display = "____________\n"+
                         "       |      \n"+
                         "       O      \n"+
-                        "     --|--     \n"+
+                        "     --|--    \n"+
                         "       |      \n"+
-                        "      / \\       \n"+
-                        "     /   \\      ";
+                        "      / \\    \n"+
+                        "     /   \\     ";
                 break;
         }
         return display;
