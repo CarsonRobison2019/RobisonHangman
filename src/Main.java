@@ -4,12 +4,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //all the words in the game.
-        String[] words = {"nail", "silk", "numberless", "sloppy", "military", "necessary", "injure", "field", "boorish",
-                "inject", "suspend", "curtain", "alert", "skin", "acrid", "wild", "powder", "cough", "open", "work", "waste",
-                "ducks", "aboard", "dance", "tranquil", "truculent", "cow", "point", "basket", "calculator", "drum", "lip",
-                "flawless", "spade", "sisters", "cover", "possess", "slimy", "adventurous", "quilt", "beam", "lean", "desk",
+        String[] words = {"nail","silk","numberless","sloppy","military","necessary","injure","field","boorish", "inject",
+                "suspend","curtain","alert","skin","acrid","wild","powder","cough","open","work","waste",
+                "ducks","aboard","dance","tranquil","truculent","cow","point","basket","calculator","drum","lip",
+                "flawless","spade","sisters","cover","possess","slimy","adventurous","quilt","beam","lean","desk",
                 "mine", "imaginary", "grumpy", "silent", "stop", "cut", "malicious", "delicate", "smoke", "clear", "store",
-                "eggs", "fear", "long", "pathetic", "overrated", "adamant", "toothbrush", "hour", "crazy", "flowery", "dust",
+               "eggs", "fear", "long", "pathetic", "overrated", "adamant", "toothbrush", "hour", "crazy", "flowery", "dust",
                 "arm", "mean", "demonic", "ambitious", "kiss", "redundant", "jump", "turn", "produce", "follow",
                 "slippery", "rough", "wholesale", "eatable", "strange", "trouble", "dream", "cute", "tomatoes", "gentle",
                 "fish", "cloudy", "concentrate", "wretched", "pie", "office", "wire", "receipt", "jobless", "cannon",
@@ -25,7 +25,7 @@ public class Main {
                 "incredible", "invincible", "crown", "rabid", "craven", "whisper", "tart", "automatic", "wise",
                 "realise", "prepare", "birds", "decide", "ten", "explode", "passenger", "porter", "trees", "adaptable",
                 "fabulous", "theory", "wistful", "glistening", "ground", "cover", "wood", "melodic", "stingy",
-                "bathe", "eye", "murder", "brother", "knotty", "eyes", "cruel", "return", "nauseating", "believe", "bawdy", "land",
+                "bathe","eye","murder","brother","knotty","eyes","cruel","return","nauseating","believe","bawdy","land",
                 "untidy", "free", "plausible", "remove", "weigh", "naive", "tired", "wealth", "fry", "oranges", "sleep", "like",
                 "locket", "stupid", "pass", "premium", "disgusting", "beautiful", "fallacious", "meek", "appliance", "labored",
                 "smelly", "tremble", "halting", "hope", "moon", "plastic", "cars", "verdant", "flap", "river",
@@ -40,16 +40,17 @@ public class Main {
                 "loss", "care", "bird", "coach", "measure", "tub", "plane", "pocket", "nice", "uppity", "neat", "damaged", "sassy",
                 "garrulous", "wall", "plough", "recondite", "flood", "peel", "religion", "influence", "crib", "label", "even",
                 "actor", "snatch", "industrious", "honey", "sack", "elated", "bear", "empty", "range", "spare", "multiply",
-                "rescue", "thirsty", "writer", "lively", "silly", "action", "itchy", "drop", "comfortable", "destroy", "loving",
+               "rescue", "thirsty", "writer", "lively", "silly", "action", "itchy", "drop", "comfortable", "destroy", "loving",
                 "funny", "grouchy", "brown", "stir", "abiding", "internal", "prefer", "excuse", "tray", "tasteless",
                 "interest", "petite", "guide", "alert", "tangible", "record", "flesh", "certain", "psychedelic", "bomb",
                 "adhesive", "downtown", "cautious", "glossy", "wicked", "bounce", "onerous", "evasive", "wound", "soda",
                 "sick", "quiet", "festive", "pump", "summer", "remarkable", "snail", "exciting", "mother", "plastic", "black",
                 "bit", "giants", "harmonious", "questionable", "roomy", "abrasive", "interfere", "scream", "end", "lyrical",
                 "frogs", "violet", "woozy", "apparel", "hydrant", "reign", "unkempt", "legs", "shelf", "dear", "sneeze",
-                "insidious", "strip", "ruddy", "snails", "absurd", "ill", "same", "knife", "slim", "embarrass", "mice", "shame",
+               "insidious", "strip", "ruddy", "snails", "absurd", "ill", "same", "knife", "slim", "embarrass", "mice", "shame",
                 "normal", "useful", "complete", "waggish", "gaudy", "number", "fancy", "flaky", "robust", "massive", "existence",
                 "charming", "disillusioned", "encourage", "behave", "chess", "mourn", "grandfather", "zany", "crayon",
+                "abcdefghijklmnopqrstuvwxyz"
                 "time", "overwrought", "eager", "rude","yeet","jazz","pneumonoultramicroscopicsilicovolcanoconiosis"};
         // Picks a word for the game
         int WordNumber = (int) (Math.random() * words.length);
@@ -58,9 +59,9 @@ public class Main {
         int triesCount = 0;
         int badguess =0;
         boolean wordIsGuessed = false;
-        System.out.println(words[WordNumber]);
+        //System.out.println(words[WordNumber]);
         do {
-            System.out.println(displayHangman(badguess)+"\n"+"\nyou have missed "+badguess+" letters");
+
             switch (enterLetter(words[WordNumber], enteredLetters)){
                 case 0:
                     triesCount++;
@@ -77,14 +78,16 @@ public class Main {
                     wordIsGuessed = true;
                     break;
             }
-        }while (! wordIsGuessed);
-        System.out.println(" you missed "+ badguess + " times "+ "\nThe Word was "+words[WordNumber]);
+
+            System.out.println(displayHangman(badguess)+"\n"+"\nyou have missed "+badguess+" letters");
+        }while (! wordIsGuessed&& badguess <6 );
+
+        System.out.println("\n\nYou guessed "+ badguess + " incorrect times"+ "\nThe Word was "+words[WordNumber] +"\n"+
+        "you guessed a total of "+ triesCount+ " times" + "\nWould you like to play the game again?" +
+                "(Y/N)");
     }
 
-
-
-
-    public static int enterLetter(String word, char[] enteredLetters)    {
+    private static int enterLetter(String word, char[] enteredLetters)    {
         System.out.print("Take a chance to save the man what is you letter of choice ");
         if (! printWord(word, enteredLetters))
             return 3;
@@ -108,7 +111,7 @@ public class Main {
 
 
 
-    public static boolean printWord(String word, char[] enteredLetters) {
+    private static boolean printWord(String word, char[] enteredLetters) {
         // Iterate through all letters in word
         boolean asteriskPrinted = false;
         for (int i = 0; i < word.length(); i++) {
@@ -127,27 +130,27 @@ public class Main {
 
 
 
-    public static boolean inEnteredLetters(char letter, char[] enteredLetters) {
+    private static boolean inEnteredLetters(char letter, char[] enteredLetters) {
         return new String(enteredLetters).contains(String.valueOf(letter));
     }
 
 
 
 
-    public static int findEmptyPosition(char[] enteredLetters) {
+    private static int findEmptyPosition(char[] enteredLetters) {
         int i = 0;
         while (enteredLetters[i] != '\u0000') i++;
         return i;
     }
 
-    public static String displayHangman(int badguess){
+    private static String displayHangman(int badguess){
         String display = "";
         switch(badguess){
             case 0:
                 display = " ";
                 break;
             case 1:
-                display = "____________\n"+
+                display = "\n____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "              \n"+
@@ -156,7 +159,7 @@ public class Main {
                         "              \n";
                 break;
             case 2:
-                display = "____________\n"+
+                display = "\n____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "       |      \n"+
@@ -165,7 +168,7 @@ public class Main {
                         "              \n";
                 break;
             case 3:
-                display = "____________\n"+
+                display = "\n____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "       |--    \n"+
@@ -174,7 +177,7 @@ public class Main {
                         "              \n";
                 break;
             case 4:
-                display = "____________\n"+
+                display = "\n____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "     --|--    \n"+
@@ -183,7 +186,7 @@ public class Main {
                         "              \n";
                 break;
             case 5:
-                display = "____________\n"+
+                display = "\n____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "     --|--    \n"+
@@ -192,7 +195,7 @@ public class Main {
                         "     /          ";
                 break;
             case 6:
-                display = "____________\n"+
+                display = "\n____________\n"+
                         "       |      \n"+
                         "       O      \n"+
                         "     --|--    \n"+
@@ -203,5 +206,7 @@ public class Main {
         }
         return display;
     }
+
+
 
 }
